@@ -68,28 +68,22 @@ EFIAP Levels D1/D2/D3
 '''
 #Import Libraries
 from datetime import date
-import pygsheets
+#import pygsheets
 
 #Access user google account
 #Walks user through a consent process on first runtime
-gc = pygsheets.authorize(client_secret='./data/client_secret.json',credentials_directory="./data")
+#gc = pygsheets.authorize(client_secret='./data/client_secret.json',credentials_directory="./data")
 
-class MainApplication(tk.Frame):
+class MainApplication():
     
     #---<===>---# Main Controller Function #---<===>---# 
 
     def __init__(self, parent, sheet):
-        tk.Frame.__init__(self, parent)
         
         #---<===>---# Class Attributes #---<===>---# 
                
         #Store google client
         self.gc = sheet
-
-        #Title variables
-        self.portElegDist = tk.StringVar()
-        self.portEarnedDist = tk.StringVar()
-        self.openTitle = tk.StringVar()
 
         #Runtime Records
         self.whatsOpen = None
@@ -106,6 +100,8 @@ class MainApplication(tk.Frame):
         self.subColumns = 10
         self.editableSubColumns = 10
         self.fiapDist = ["None","AFIAP","EFIAP","EFIAP/b","EFIAP/s","EFIAP/g","EFIAP/p","EFIAP/d1","EFIAP/d2","EFIAP/d3"]
+        self.portElegDist = "None"
+        self.portEarnedDist = "None"
 
         #---<===>---# END Class Attributes #---<===>---# 
 
@@ -177,39 +173,6 @@ class MainApplication(tk.Frame):
         #---<===>---# END Display Tables #---<===>---# 
 
 
-
-        #---<===>---# Run GUI Creation #---<===>---# 
-
-        #Main GUI creation process
-        self.buildGUIStructure()
-        self.update()
-        
-        #Show a display telling the user the program is loading      
-        self.loadMessage("Loading...")
-
-        #Open the user's google sheets spreadsheet where records will be kept
-        #If one doesn't exist it will be created for them
-        self.openSpreadsheet()
-
-        #Find records from the spreadsheet 
-        self.buildRecords()
-
-        #Build the top portfolio progress display       
-        self.renderPortfolio()
-
-        #Build the header and title displays for the central window
-        self.buildTitles()
-
-        #---<===>---# END GUI Creation
-
-
-        #Open Submission Record screen by default.
-        #In the future could save the last open screen and open that by default
-        #when the user runs the program next.
-        self.openSubRecord()
-
-        #Close the loading popup
-        self.loadingDisplay.destroy()
 
     #---<===>---# END Main Controller Function #---<===>---#  
 
