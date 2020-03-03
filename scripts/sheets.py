@@ -68,11 +68,11 @@ EFIAP Levels D1/D2/D3
 '''
 #Import Libraries
 from datetime import date
-#import pygsheets
+import pygsheets
 
 #Access user google account
 #Walks user through a consent process on first runtime
-#gc = pygsheets.authorize(client_secret='./data/client_secret.json',credentials_directory="./data")
+gc = pygsheets.authorize(client_secret='./data/client_secret.json',credentials_directory="./data")
 
 class MainApplication():
     

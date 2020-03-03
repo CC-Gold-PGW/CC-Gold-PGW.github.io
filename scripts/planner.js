@@ -22,6 +22,31 @@
 
 $(function () {
 
+    function authFlow(){
+        var google = require('googleapis');
+        var client = new google.auth.JWT(
+            keys.client_email,
+            null,
+            keys.private_key,
+            ['https://www.googleapis.com/auth/spreadsheets'],
+            null
+        );
+        return new Promise((resolve, reject) => {
+            client.authorize((err, tokens) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    google.options({
+                        auth: client
+                    });
+                    resolve();
+                }
+            });
+        });
+    }
+
+    authFlow();
+
     $("div").css({
         "border-color": "#C1E0FF",
         "border-width": "1px",
