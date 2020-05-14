@@ -12,7 +12,7 @@
 //#  PROGRAM NAME : FIAP Distinction Planner                                                                                                                                       #//
 //#        AUTHOR : C.C Gold                                                                                                                                                       #//
 //#  DATE CREATED : 20/03/2019                                                                                                                                                     #//
-//#       VERSION : 0.8.8.0                                                                                                                                                        #//
+//#       VERSION : 0.0.0.1w                                                                                                                                                      #//
 //#                                                                                                                                                                                #//
 //#   DESCRIPTION :                                                                                                                                                                #//
 //#   A planner to help art photographers prepare for achieving a FIAP distinction                                                                                                 #//
@@ -20,7 +20,7 @@
 //#---<===>------<===>------<===>------<===>------<===>------<===>------<===>------<===>------<===>------<===>------<===>------<===>------<===>------<===>------<===>------<===>---#//
 
 
-$(function () {
+$(document).ready(function () {
 
     function authFlow(){
         var google = require('googleapis');
